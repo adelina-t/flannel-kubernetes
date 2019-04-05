@@ -39,21 +39,12 @@
     path: "{{ install_path }}/Dockerfile"
     create: yes
     line: |
-      FROM {{ docker_images.nanoserver }}
+      FROM {{ docker_images.1809 }}
       CMD cmd /c ping -t localhost
 
 - name: Flannel | Prepare kubeletwin\pause image
   win_shell: |
     docker pull "{{ docker_images.1809 }}"
-    if (!(docker images "{{ docker_images.nanoserver }}:latest" -q))
-    {
-        docker tag (docker images {{ docker_images.nanoserver }} -q) {{ docker_images.nanoserver }}
-    }
-
-    if (!(docker images "{{ docker_images.servercore }}:latest" -q))
-    {
-        docker tag (docker images {{ docker_images.servercore }} -q) {{ docker_images.servercore }}
-    }
     cd {{ install_path }}
     docker build -t kubeletwin/pause .
 
