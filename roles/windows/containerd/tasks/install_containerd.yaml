@@ -15,7 +15,7 @@
     create: yes
     line: |-
       service-name=Containerd
-      service-command={{ install_path }}/containerd.exe
+      service-command={{ install_path }}/containerd.exe --log-level=debug
       log-file={{ install_path }}/containerd.log
 
 - name: Containerd | Create the Containerd Windows service using the service wrapper
