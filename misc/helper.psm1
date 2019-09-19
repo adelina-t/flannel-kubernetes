@@ -366,6 +366,9 @@ Update-CNIConfig
                   "Nameservers" : [ "10.96.0.10" ],
                   "Search": [ "svc.cluster.local" ]
                 },
+                "capabilities": {
+                  "dns": true
+                },
                 "policies" : [
                   {
                     "Name" : "EndpointPolicy", "Value" : { "Type" : "OutBoundNAT", "ExceptionList": [ "<ClusterCIDR>", "<ServerCIDR>", "<MgmtSubnet>" ] }
@@ -405,6 +408,9 @@ Update-CNIConfig
                 "dns" : {
                   "Nameservers" : [ "11.0.0.10" ],
                   "Search": [ "default.svc.cluster.local" ]
+                },
+                "capabilities": {
+                  "dns": true
                 },
                 "Policies" : [
                   {
