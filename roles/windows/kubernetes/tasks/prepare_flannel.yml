@@ -26,13 +26,13 @@
     path: "{{ install_path }}/Dockerfile"
     create: yes
     line: |
-      FROM {{ docker_images.nanoserver }}
+      FROM mcr.microsoft.com/windows/nanoserver:1809 
       CMD cmd /c ping -t localhost
   when: CONTAINER_RUNTIME == "docker"
 
 - name: Flannel | Prepare kubeletwin\pause image
   win_shell: |
-    docker pull "{{ docker_images.nanoserver }}"
+    docker pull mcr.microsoft.com/windows/nanoserver:1809  
     cd {{ install_path }}
     docker build -t kubeletwin/pause .
   when: CONTAINER_RUNTIME == "docker"
